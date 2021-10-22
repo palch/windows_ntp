@@ -3,6 +3,11 @@
   win_timezone:
     timezone: "{{tzone}}"
 
+- name: Make sure w32time service running
+  win_service:
+        name: w32time
+        state: started
+
 - name: Get NTP server list
   win_shell: W32tm /query /source
   register: ntp_list
